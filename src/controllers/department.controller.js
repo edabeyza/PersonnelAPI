@@ -7,10 +7,14 @@ const Department =  require('../models/department.model')
 
 module.exports.department = {
     list: async (req, res) => {
-
         
+        const data = await res.getModelList(Department) // Pagination
+        // const data = await Department.find({})
+
         res.status().send({
             error: false,
+            data,
+            detail: await res.getModelListDetails(Department)
         })
     },
 
