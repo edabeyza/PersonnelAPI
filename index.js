@@ -9,31 +9,30 @@
 */
 
 const express = require("express");
+const { dbConnection } = require("./src/configs/dbConnection");
 const app = express();
 
-// For reading the dotenv file
-require('dotenv').config()
-const PORT = process.env.PORT || 8000
+/* ------------------------------------------------------- */
 
+// continue from here...
+// envVariables to process.env:
+require("dotenv").config();
+const PORT = process.env?.PORT || 8000;
 
-/*------------------------------------------------*/
+// asyncErrors to errorHandler:
+require("express-async-errors");
 
-// For accepting JSON data
-app.use(express.json())
-
-// For catch the async errors
-require('express-async-errors')
+app.use("/departments", require("./src/routes/department.router"));
 
 /* ------------------------------------------------------- */
-// For connecting the DB
-require('./src//configs/db.connection')()
-/* ------------------------------------------------------- */
+
+dbConnection();
 
 // errorHandler:
-app.use(require("./src/middlewares/error.handler"));
+app.use(require("./src/middlewares/errorHandler"));
 
 // RUN SERVER:
-app.listen(PORT, () => console.log("http://127.0.0.1:" + PORT));
+app.listen(PORT, () => console.log("Runnng on http://127.0.0.1:" + PORT));
 
 /* ------------------------------------------------------- */
 // Syncronization (must be in commentLine):
