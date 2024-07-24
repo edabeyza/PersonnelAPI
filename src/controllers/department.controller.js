@@ -1,6 +1,6 @@
 "use strict";
 /* -------------------------------------------------------
-    EXPRESS - Personnel API
+                EXPRESS - Personnel API
 ------------------------------------------------------- */
 
 const Department = require("../models/department.model");
