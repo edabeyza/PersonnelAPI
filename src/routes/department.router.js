@@ -3,7 +3,7 @@
 const { department } = require('../controllers/department.controller');
 
 /* -------------------------------------------------------
-                    EXPRESS - Personnel API
+                   EXPRESS - Personnel API
 ------------------------------------------------------- */
 
 const router = require('express').Router()
